@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人网站</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 固定导航栏 -->
+    <nav class="navbar">
+        <div class="logo">欢迎观看王渐渐个人主页</div>
+        <div class="social-icons">
+        </div>
+    </nav>
+
+    <!-- 主体内容区 -->
+    <main class="content">
+        <section id="about" class="section">
+            <h2>个人简介</h2>
+            <div class="about-content">
+                <img src="E:\wang-trae\IMG_1227.JPG" alt="头像" class="avatar">
+                <p>姓名；王建军<br>年龄：18岁<br>职业标签：一名刚刚中职高中毕业准备读大学的学生<br>核心技能：网页设计开发<br>成就亮点：2025年设计此网站<br>高中期间的小成就：2022年高一军训期间，荣获校级评为“军训标兵”
+                    2022年高一军训期间，“迷彩。青春征文比赛”荣获校级“一等奖”；
+                    2022年高一军训期间，“牢记约定”书法比赛荣获校级“三等奖”；
+                    2022年秋期韵律操比赛，作为班长，积极并带领同学们刻苦排练，荣获全校韵律操比赛第三名；
+                    2022年秋期被评选为班级“优秀班干部”
+                    2022年秋期被评选为班级“学习之星”
+                    2022年秋期被评选为班级“德育标兵”
+                    2022年冬季运动会中积极参加团体项目，荣获校级男子组4x150米第三等奖等等。</p>
+                <!-- 轮播图容器 -->
+                <div class="slider-container-1">
+                    <div class="slider-1">
+                        <div class="slide-1"><img src="E:\wang-trae\8D072B1F68326ED6404C7AC697C4A22F.png" alt="轮播图1"></div>
+                        <div class="slide-1"><img src="E:\wang-trae\34DEC208124A85A38A318E07D7128271.png" alt="轮播图2"></div>
+                        <div class="slide-1"><img src="E:\wang-trae\IMG_0035.JPG" alt="轮播图3"></div>
+                    </div>
+                    <div class="slider-dots-1"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="works" class="section">
+            <h2>我的家乡——长宁</h2>
+            <div class="home-video-container">
+                <video src="E:\wang-trae\e2a659b4f20eda92537b31d9a217ddbf.MP4" controls loop width="1920" height="1080"></video>
+            </div>
+        </section>
+
+        <section id="timeline" class="section">
+            <h2>经历时间轴</h2>
+            <div class="timeline-container">
+                <div class="timeline-item"><span class="timeline-year">2006</span><p>我来到这颗美丽的星球"地球"</p></div>
+                <div class="timeline-item"><span class="timeline-year">2013</span><p>在老家井江读小学，正式接受知识的洗礼</p></div>
+                <div class="timeline-item"><span class="timeline-year">2019</span><p>跨入初中的大门，接受更高级的知识洗礼</p></div>
+                <div class="timeline-item"><span class="timeline-year">2022</span><p>中考失利，接触中职的大门，开始了新的旅程</p></div>
+                <div class="timeline-item"><span class="timeline-year">2025</span><p>通过单招，考到泸职校，却没有能力</p></div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+    <audio id="backgroundMusic" src="E:\wang-trae\tmp_f2b5f744c8792807b708336fd54e.mp3" loop></audio>
+    <button id="playMusicBtn" class="play-music-btn">播放背景音乐</button>
+
+    <script src="app.js"></script>
+    <script>
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const playMusicBtn = document.getElementById('playMusicBtn');
+        const video = document.querySelector('video');
+        let musicCurrentTime = 0;
+
+        // 初始化音乐播放状态
+        let isFirstInteraction = true;
+        const handleFirstInteraction = async () => {
+            if (isFirstInteraction) {
+                try {
+                    await backgroundMusic.play();
+                    playMusicBtn.style.display = 'none';
+                    isFirstInteraction = false;
+                } catch (error) {
+                    console.error('音乐播放失败:', error);
+                }
+                document.removeEventListener('click', handleFirstInteraction);
+            }
+        };
+        document.addEventListener('click', handleFirstInteraction);
+
+        playMusicBtn.addEventListener('click', async () => {
+            try {
+                await backgroundMusic.play();
+                playMusicBtn.style.display = 'none';
+            } catch (error) {
+                console.error('音乐播放失败:', error);
+            }
+        });
+
+        // 视频播放时暂停音乐并保存当前时间
+        video.addEventListener('play', () => {
+            if (!backgroundMusic.paused) {
+                musicCurrentTime = backgroundMusic.currentTime;
+                backgroundMusic.pause();
+            }
+        });
+
+        // 视频暂停或结束时恢复音乐播放
+        video.addEventListener('pause', () => {
+            if (backgroundMusic.paused) {
+                backgroundMusic.currentTime = musicCurrentTime;
+                backgroundMusic.play();
+            }
+        });
+
+        video.addEventListener('ended', () => {
+            if (backgroundMusic.paused) {
+                backgroundMusic.currentTime = musicCurrentTime;
+                backgroundMusic.play();
+            }
+        });
+
+        // 页面可见性变化时控制音乐
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                musicCurrentTime = backgroundMusic.currentTime;
+                backgroundMusic.pause();
+            } else {
+                if (!isFirstInteraction) {
+                    backgroundMusic.play();
+                }
+            }
+        });
+
+        // 页面卸载时暂停音乐
+        window.addEventListener('beforeunload', () => {
+            backgroundMusic.pause();
+        });
+
+        // 初始尝试自动播放（可能被浏览器阻止）
+        backgroundMusic.play().catch(() => {
+            playMusicBtn.style.display = 'block';
+        });
+    </script>
+    <h2>我真的很累</h2>
+</body>
+</html>

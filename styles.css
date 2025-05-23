@@ -1,0 +1,598 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    background-color: #ffffff;
+    color: #000000;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); /* 科技感渐变背景 */
+}
+
+/* 固定导航栏 */
+.navbar {
+    top: 0;
+    width: 100%;
+    padding: 1rem 5%;
+    background: transparent; /* 透明背景 */
+    box-shadow: 0 2px 20px rgba(0, 123, 255, 0.3); /* 蓝色发光阴影 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: background 0.3s, box-shadow 0.3s; /* 背景过渡动画 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 5rem; /* 放大一倍字体 */
+    margin: 0 auto; 
+    flex-shrink: 0; 
+    font-weight: 900;
+    color: transparent;
+    cursor: pointer;
+    text-shadow: 0 0 15px rgba(0, 123, 255, 0.4); /* 增强蓝色发光阴影 */
+    background: linear-gradient(135deg, #00a2ff, #000000); /* 调整渐变角度和颜色 */
+    -webkit-background-clip: text; /* 文字填充背景 */
+    background-clip: text;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.social-icons img:hover {
+    opacity: 1;
+    transform: scale(1.1); /* 悬停放大效果 */
+    filter: drop-shadow(0 0 8px rgba(0, 123, 255, 0.5)); /* 蓝色投影 */
+}
+
+/* 轮播图容器 */
+.slider-container {
+    margin-top: 80px;
+    height: auto;  /* 改为自适应高度 */
+    position: relative;
+    overflow: hidden;
+}
+
+/* 家乡视频容器样式 */
+.home-video-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+.home-video-container video {
+    max-width: 100%;
+    height: 540px;
+    width: 960px;
+    object-fit: contain;
+}
+
+/* 个人简介内容布局 */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.about-content p {
+    flex: 1;
+    min-width: 300px;
+    /* 确保文字可换行 */
+}
+
+.avatar {
+    width: 200px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 8px;
+}
+
+
+
+/* 新增轮播容器1样式 */
+.slider-container-1 {
+    margin: 0;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    width: 40%; /* 占文字区域40%宽度 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-shrink: 0; /* 防止被压缩 */
+    margin-left: auto; /* 右侧居中 */
+    margin-right: auto;
+}
+
+.slider-1 {
+    display: flex;
+    height: 100%;
+    transition: transform 0s;
+    flex: 1; /* 占据剩余空间 */
+}
+
+.slide-1 {
+    min-width: 100%; /* 保持100%宽度确保完全覆盖容器 */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-1 img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+/* 轮播导航点样式 */
+.slider-dots-1 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.slider-dots-1 .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.slider-dots-1 .dot.active {
+    opacity: 1;
+    background-color: #3a86ff;
+}    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.slider-1 {
+    height: 100%;
+    display: flex;
+    flex: 1;
+}
+
+.slide-1 {
+    min-width: 100%; /* 保持100%宽度确保完全覆盖容器 */
+    height: 100%;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+    z-index: 0; /* 降低轮播项层级，避免覆盖文字 */
+}
+
+.slide-1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 改为包含模式保持图片完整 */
+}
+
+.slider-dots-1 {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.slider-dots-1 .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(200, 200, 200, 0.3); /* 浅灰色半透明背景 */
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.slider-dots-1 .dot.active {
+    background: #3a86ff;
+    width: 20px;
+    border-radius: 5px;
+}
+
+/* 新增轮播容器2样式 */
+.slider-container-2 {
+    margin: 0;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+}
+
+.slider-2 {
+    height: 100%;
+    display: flex;
+}
+
+.slide-2 {
+    min-width: 100%; /* 保持100%宽度确保完全覆盖容器 */
+    height: 100%;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide-2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-dots-2 {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.slider-dots-2 .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(200, 200, 200, 0.3); /* 浅灰色半透明背景 */
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.slider-dots-2 .dot.active {
+    background: #3a86ff;
+    width: 20px;
+    border-radius: 5px;
+}
+
+.slider {
+    height: 100%;
+    display: flex;
+}
+
+.slide {
+    min-width: 100%; /* 保持100%宽度确保完全覆盖容器 */
+    height: 100%;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;  /* 新增硬件加速 */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 改为覆盖模式避免留白 */
+}
+
+.slide-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1; /* 提升文字层级，避免被图片覆盖 */
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.slider-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.slider-dots .dot.active {
+    background: #3a86ff;
+    width: 24px;
+    border-radius: 6px;
+}
+
+/* 主体内容区 */
+.content {
+    padding: 80px 5% 0;
+}
+
+.section {
+    min-height: 100vh;
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    color: #2d3436;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* 个人简介 */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover; /* 改为覆盖模式避免留白 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 作品展示 */
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.work-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.work-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.3); /* 悬停蓝色阴影 */
+}
+
+.work-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* 改为覆盖模式避免留白 */
+}
+
+.work-card p {
+    padding: 1rem;
+    text-align: center;
+}
+
+/* 经历时间轴 */
+.timeline-container {
+    position: relative;
+    margin-top: 2rem;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #3a86ff;
+}
+
+.timeline-item {
+    width: 50%;
+    padding: 1rem;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+    margin-left: 50%;
+    padding-left: 2rem;
+}
+
+.timeline-year {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #3a86ff;
+}
+
+/* 技能清单样式 */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* 家乡视频容器样式 */
+.home-video-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+.home-video-container video {
+    max-width: 100%;
+    height: 540px;
+    width: 960px;
+    object-fit: contain;
+}
+
+/* 个人简介内容布局 */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.about-content p {
+    flex: 1;
+    min-width: 300px;
+    /* 确保文字可换行 */
+}
+
+.avatar {
+    width: 200px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 8px;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.skill-bar {
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: #3a86ff;
+    transition: width 0.8s ease-in-out;
+}
+
+/* 联系方式 */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contact-form button {
+    padding: 0.8rem;
+    background: #3a86ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-form button:hover {
+    background: #2661d6;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* 返回顶部按钮 */
+.back-to-top {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #3a86ff;
+    color: white;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.back-to-top:hover {
+    background: #2661d6;
+}
+
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 3%;
+    }
+
+    .slider-container {
+        height: 400px;
+    }
+
+    .slide-text {
+        font-size: 1.5rem;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .timeline-container::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 40px;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .social-icons img {
+        width: 20px;
+        height: 20px;
+    }
+}
